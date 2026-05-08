@@ -12,7 +12,6 @@ import alternateurImg from "../assets/alternateur.jpg";
 import filtreAirImg from "../assets/FiltreAAir.jpg";
 import roulementImg from "../assets/roulement-avant-clio-3-rs-megane-3-rs-megane-4-rs.jpg";
 import radiateurImg from "../assets/Radiateur.jpg";
-import {Link} from "react-router-dom";
 
 const allProducts = [
   { id: 1, name: "Plaquettes de frein avant", brand: "Bosch", category: "Freinage", price: 24500, ref: "BP-2024-F", badge: "Populaire", stock: true, img: plaquetteImg },
@@ -43,6 +42,7 @@ export default function CataloguePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [priceMax, setPriceMax] = useState(150000);
   const [inStockOnly, setInStockOnly] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = allProducts
       .filter((p) => selectedCategory === "Tous" || p.category === selectedCategory)
@@ -73,9 +73,9 @@ export default function CataloguePage() {
               </a>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <Link to="/" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Acceuil</Link>
-              <Link to="/product" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Produits</Link>
-              <Link to="/catalogue" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Catalogue</Link>
+              <a href="#" className="text-sm text-orange-500 font-semibold">Catalogue</a>
+              <a href="#" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Marques</a>
+              <a href="#" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Contact</a>
             </div>
             <button className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-4 py-2 rounded transition-colors">
               Panier (0)
@@ -94,8 +94,16 @@ export default function CataloguePage() {
 
         <div className="max-w-7xl mx-auto px-4 pb-16 flex gap-8">
 
+          {/* Mobile filter button */}
+          <button
+              onClick={() => setFiltersOpen(!filtersOpen)}
+              className="lg:hidden fixed bottom-6 right-6 z-50 bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-3 rounded-full shadow-lg transition-colors"
+          >
+            {filtersOpen ? "✕ Fermer" : "⚙ Filtres"}
+          </button>
+
           {/* SIDEBAR */}
-          <aside className="hidden lg:block w-56 shrink-0 space-y-6">
+          <aside className={`${filtersOpen ? "fixed inset-0 z-40 bg-zinc-950 overflow-auto p-6" : "hidden"} lg:relative lg:block lg:inset-auto lg:z-auto lg:bg-transparent lg:p-0 w-full lg:w-56 shrink-0 space-y-6`}>
 
             {/* Categories */}
             <div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import heroImg from "../assets/hero.jpg";
+import heroImg from "../assets/hero.png";
 import plaquetteImg from "../assets/plaquetteDeFrein.jpg";
 import filtreHuileImg from "../assets/Filtre_-_huile_universel.jpg";
 import batterieImg from "../assets/baterie.jpg";
@@ -61,6 +61,7 @@ function formatPrice(price: number) {
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
       <div className="min-h-screen bg-zinc-950 text-white font-sans">
@@ -75,30 +76,44 @@ export default function HomePage() {
             <div className="hidden md:flex items-center gap-8">
               <Link to="/catalogue" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Catalogue</Link>
               <Link to="/product" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Produits</Link>
-              <Link to="/" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Acceuil</Link>
+              <Link to="/" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Accueil</Link>
             </div>
-            <div className="flex items-center gap-4">
-              <button className="text-sm text-zinc-400 hover:text-white transition-colors">Connexion</button>
+            <div className="flex items-center gap-3">
+              <button className="hidden md:block text-sm text-zinc-400 hover:text-white transition-colors">Connexion</button>
               <button className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-4 py-2 rounded transition-colors">
                 Panier (0)
               </button>
+              <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="md:hidden text-zinc-400 hover:text-white p-1"
+              >
+                {menuOpen ? "✕" : "☰"}
+              </button>
             </div>
           </div>
+          {/* Mobile menu */}
+          {menuOpen && (
+              <div className="md:hidden border-t border-zinc-800 px-4 py-4 flex flex-col gap-3">
+                <Link to="/catalogue" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Catalogue</Link>
+                <Link to="/product" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Produits</Link>
+                <Link to="/login" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Connexion</Link>
+              </div>
+          )}
         </nav>
 
         {/* HERO */}
-        <section className="relative bg-zinc-900 py-20 px-4 overflow-hidden">
+        <section className="relative bg-zinc-900 py-12 md:py-20 px-4 overflow-hidden">
           <img src={heroImg} alt="Hero" className="absolute inset-0 w-full h-full object-cover opacity-10" />
           <div className="relative max-w-7xl mx-auto">
             <div className="max-w-2xl">
             <span className="inline-block bg-orange-500/10 text-orange-400 text-xs font-semibold px-3 py-1 rounded-full mb-4 border border-orange-500/20">
               + de 5000 références disponibles
             </span>
-              <h1 className="text-5xl font-black leading-tight mb-4">
+              <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4">
                 Toutes vos pièces <br />
                 <span className="text-orange-500">détachées</span> en un clic
               </h1>
-              <p className="text-zinc-400 text-lg mb-8">
+              <p className="text-zinc-400 text-base md:text-lg mb-8">
                 Trouvez la bonne pièce pour votre véhicule. Livraison rapide, qualité garantie.
               </p>
               <div className="flex gap-3 flex-col sm:flex-row">
@@ -193,9 +208,9 @@ export default function HomePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-4 text-center">
+        <section className="py-12 md:py-20 px-4 text-center">
           <div className="max-w-xl mx-auto">
-            <h2 className="text-3xl font-black mb-4">Vous ne trouvez pas votre pièce ?</h2>
+            <h2 className="text-2xl md:text-3xl font-black mb-4">Vous ne trouvez pas votre pièce ?</h2>
             <p className="text-zinc-400 mb-8">Contactez notre équipe, on vous trouve ce qu'il vous faut.</p>
             <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-lg transition-colors text-sm">
               Nous contacter
