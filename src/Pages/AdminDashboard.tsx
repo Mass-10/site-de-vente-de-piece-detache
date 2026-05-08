@@ -143,7 +143,7 @@ export default function AdminDashboard() {
             <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6">
               <h2 className="text-sm font-bold text-white mb-5">Top produits</h2>
               <div className="space-y-4">
-                {topProducts.map((p, i) => (
+                {topProducts.map((p) => (
                   <div key={p.name}>
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs text-zinc-300 truncate max-w-40">{p.name}</span>
