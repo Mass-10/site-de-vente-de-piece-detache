@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import heroImg from "../assets/hero.png";
+import heroImg from "../assets/hero.jpg";
 import plaquetteImg from "../assets/plaquetteDeFrein.jpg";
 import filtreHuileImg from "../assets/Filtre_-_huile_universel.jpg";
 import batterieImg from "../assets/baterie.jpg";
