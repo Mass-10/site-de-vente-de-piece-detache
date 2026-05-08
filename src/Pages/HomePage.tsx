@@ -67,7 +67,7 @@ export default function HomePage() {
       <div className="min-h-screen bg-zinc-950 text-white font-sans">
 
         {/* NAVBAR */}
-        <nav className="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
+        <nav className="bg-zinc-900/10 border-b border-zinc-800 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-orange-500 text-2xl font-black tracking-tight">MECA</span>
