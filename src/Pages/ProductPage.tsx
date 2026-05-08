@@ -75,15 +75,10 @@ export default function ProductPage() {
         <nav className="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-1">
-              <span className="text-orange-500 text-2xl font-black">MECA</span>
+              <span className="text-orange-500 text-2xl font-black"> <Link to="/" className="text-orange-500 text-2xl font-black hover:text-orange-500 transition-colors">MECA</Link></span>
               <span className="text-white text-2xl font-black">PARTS</span>
             </div>
-            <div className="hidden md:flex items-center gap-8">
-              <Link to="/" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Acceuil</Link>
-              <Link to="/product" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Produits</Link>
-              <Link to="/catalogue" className="text-sm text-zinc-400 hover:text-orange-500 transition-colors">Catalogue</Link>
 
-            </div>
             <button className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-4 py-2 rounded transition-colors">
               Panier (0)
             </button>
